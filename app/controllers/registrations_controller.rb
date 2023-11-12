@@ -2,7 +2,6 @@ class RegistrationsController < ApplicationController
   skip_before_action :authenticate_user, only: [:create]
   def create
     @user = User.new(user_params)
-    user_params['role'] = 'client'
     if @user.save
       render json: {
         user: @user
@@ -19,7 +18,9 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:users).permit(:email, :password)
+    user_params = params.permit(:email, :password)
+    user_params.merge!(role: 'client', status: true)
+    user_params
     # params.require(:users).permit(:name, :email, :password, :password_confirmation)
   end
 end
