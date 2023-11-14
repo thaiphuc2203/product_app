@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../store/reducer/authSlice';
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       // Make API request to authenticate user
@@ -20,6 +21,7 @@ const Login = () => {
 
       // Dispatch the login action with the token
       dispatch(loginUser({ data_auth }));
+      navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
       // Handle login error, show error message, etc.
@@ -83,7 +85,10 @@ const Login = () => {
                 onClick={handleLogin}
               >Sign in</button>
               <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                Don’t have an account yet?
+                <Link to="/register" className="font-medium text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  aria-current="page">  Sign up
+                </Link>
               </p>
             </form>
           </div>

@@ -5,6 +5,8 @@ import { fetchProducts } from '../store/reducer/productSlice';
 const ProductList = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.product);
+  const isAuthenticated = useSelector((state) => state.auth);
+  console.log(isAuthenticated, 'isAuthenticated')
   console.log(products, loading, error,'products, loading, error')
 
   useEffect(() => {

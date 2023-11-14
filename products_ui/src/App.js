@@ -9,34 +9,31 @@ import Me from './pages/Me';
 import Register from './pages/Register';
 import ProductList from './pages/ProductList';
 import BrandList from './pages/BrandList';
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, useNavigate , Navigate} from "react-router-dom";
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 import { isLoggedIn, logOut } from './store/reducer/userSlice';
 
 function App() {
   const dispatch = useDispatch();
+  const token = localStorage.getItem('token');
   const user = useSelector((state) => {
     return state.user;
   });
-  const [title, setTitle] = useState();
-  useEffect(() => {
-    // dispatch(isLoggedIn());
-  }, []);
+
   return (
     <div className="App container mx-auto my-8">
       <BrowserRouter>
         <Header />
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/me" element={<Me />} />
-            <Route path="/products" element={<ProductList />} />
-            <Route path="/brands" element={<BrandList />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/me" element={<ProtectedRoute><Me/></ProtectedRoute>}/>
+            <Route path="/products" element={<ProtectedRoute><ProductList/></ProtectedRoute>}/>
+            <Route path="/brands" element={<ProtectedRoute><BrandList/></ProtectedRoute>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

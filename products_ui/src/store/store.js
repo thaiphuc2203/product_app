@@ -1,20 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducer/counterSlice';
-import userReducer from './reducer/userSlice';
-import authReducer from './reducer/authSlice';
-import meSlice from './reducer/meSlice';
-import registerSlice from './reducer/registerSlice';
-import productSlice from './reducer/productSlice';
-import brandSlice from './reducer/brandSlice';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    user: userReducer,
-    auth: authReducer,
-    me: meSlice,
-    register: registerSlice,
-    product: productSlice,
-    brand: brandSlice,
-  },
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage/session';
+import { rootReducer } from './reducer';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: [],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
+
+export const persistor = persistStore(store);
+export default store;
