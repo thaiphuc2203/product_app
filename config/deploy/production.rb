@@ -59,7 +59,7 @@ server "15.235.187.53",
     auth_methods: %w(publickey),
     # password: "@Thai2203",
   }
-set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "/home/ubuntu/my_app_name"
 set :branch, 'main'
 set :stage, :production
 set :rails_env, :production
