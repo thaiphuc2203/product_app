@@ -42,7 +42,19 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
 end
 
+gem 'capistrano'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rails'
+gem 'capistrano-rbenv'
+
 group :development do
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
+end
+
+group :production do
+  gem 'capistrano-rvm'
+  gem 'capistrano-yarn'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
