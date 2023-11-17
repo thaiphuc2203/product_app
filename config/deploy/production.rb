@@ -55,7 +55,7 @@ server "15.235.187.53",
   ssh_options: {
     # keys: %w(/home/user_name/.ssh/authorized_keys),
     keys: %w(/Users/thaiphuc/.ssh/id_ed25519_ovh),
-    forward_agent: false,
+    forward_agent: true,
     auth_methods: %w(publickey),
     # password: "@Thai2203",
   }

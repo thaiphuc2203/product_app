@@ -7,7 +7,7 @@ lock "~> 3.18.0"
 # Default deploy_to directory is /var/www/my_app_name
 set :application, "my_app_name"
 set :repo_url, "git@github.com:thaiphuc2203/product_app.git"
-
+set :use_sudo, true
 # Deploy to the user's home directory
 set :deploy_to, "/home/ubuntu/#{fetch :application}"
 
@@ -78,3 +78,7 @@ set :keep_releases, 5
 # set :puma_worker_timeout, nil
 # set :puma_init_active_record, true
 # set :puma_preload_app, false
+set :default_env, {
+   PATH: '$HOME/.npm-packages/bin/:$PATH',
+   NODE_ENVIRONMENT: 'production'
+}

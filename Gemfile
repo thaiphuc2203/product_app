@@ -43,10 +43,14 @@ group :development, :test do
 end
 
 gem 'capistrano'
-gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
-
+group :assets do
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
+end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
