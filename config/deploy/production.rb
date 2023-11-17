@@ -54,6 +54,6 @@ server '15.235.187.53',
          password: 'ub8hZFs5NNPp'
        }
 # set :deploy_to, '/home/ubuntu/my_app_name'
-# set :branch, 'main'
-# set :stage, :production
-# set :rails_env, :production
+set :branch, 'main'
+set :stage, :production
+set :rails_env, :production
