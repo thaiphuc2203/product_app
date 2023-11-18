@@ -53,6 +53,7 @@ server '15.235.187.53',
          auth_methods: %w[publickey password],
          password: 'dgVZ2yEA3Edz'
        }
+set :default_env, { 'PASSENGER_INSTANCE_REGISTRY_DIR' => '/home/deploy/passenger_temp' }
 # set :deploy_to, '/home/ubuntu/my_app_name'
 set :branch, 'main'
 set :stage, :production
