@@ -47,6 +47,9 @@ gem 'capistrano'
 gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
+gem 'rbnacl', '< 5.0', :require => false                                                                                                                                                                
+gem 'rbnacl-libsodium', :require => false                                                                                                                                                               
+gem 'bcrypt_pbkdf', '< 2.0', :require => false
 group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
