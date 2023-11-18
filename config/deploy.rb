@@ -5,11 +5,11 @@ lock "~> 3.18.0"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :application, "my_app_name"
+set :application, "myapp"
 set :repo_url, "git@github.com:thaiphuc2203/product_app.git"
 set :use_sudo, true
 # Deploy to the user's home directory
-set :deploy_to, "/home/ubuntu/#{fetch :application}"
+set :deploy_to, "/home/deploy/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 

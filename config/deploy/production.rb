@@ -44,14 +44,14 @@
 # The server-based syntax can be used to override options:
 # ------------------------------------
 server '15.235.187.53',
-       user: 'ubuntu',
+       user: 'deploy',
        roles: %w[web app],
        ssh_options: {
          # keys: %w(/home/user_name/.ssh/authorized_keys),
          keys: %w[/Users/thaiphuc/.ssh/id_ed25519_ovh],
          forward_agent: true,
          auth_methods: %w[publickey password],
-         password: 'ub8hZFs5NNPp'
+         password: 'dgVZ2yEA3Edz'
        }
 # set :deploy_to, '/home/ubuntu/my_app_name'
 set :branch, 'main'
