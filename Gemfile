@@ -9,7 +9,9 @@ gem 'rails', '~> 7.1.2'
 gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '>= 5.0'
+gem 'puma', '< 5'
+
+gem 'base64', '0.1.1'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -39,7 +41,7 @@ gem 'jwt_sessions'
 
 group :development, :test do
   gem 'capistrano',         require: false
-  gem 'capistrano3-puma',   require: false
+  gem 'capistrano3-puma', "4.0.0" ,   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-rvm',     require: false
