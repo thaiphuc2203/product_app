@@ -39,6 +39,12 @@ gem 'rack-cors'
 
 gem 'jwt_sessions'
 
+group :assets do
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
+end
+
 group :development, :test do
   gem 'capistrano',         require: false
   gem 'capistrano3-puma', "4.0.0" ,   require: false
