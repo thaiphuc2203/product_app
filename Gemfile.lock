@@ -96,10 +96,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (4.0.0)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (~> 4.0)
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -161,7 +160,7 @@ GEM
     pg (1.5.4)
     psych (5.1.1.1)
       stringio
-    puma (4.3.12)
+    puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.8)
@@ -260,12 +259,12 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
-  capistrano3-puma (= 4.0.0)
+  capistrano3-puma
   coffee-rails
   debug
   jwt_sessions
   pg (~> 1.1)
-  puma (< 5)
+  puma (~> 6.4)
   rack-cors
   rails (~> 7.1.2)
   redis (>= 4.0.1)
