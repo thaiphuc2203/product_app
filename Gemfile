@@ -6,8 +6,8 @@ ruby '3.1.2'
 gem 'rails', '~> 7.1.1'
 
 # Use postgresql as the database for Active Record
+gem 'mysql2'
 gem 'pg', '~> 1.1'
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
@@ -21,6 +21,7 @@ gem 'redis', '>= 4.0.1'
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem 'base64', '0.1.1'
 gem 'bcrypt', '~> 3.1.7'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -46,3 +47,12 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem 'bcrypt_pbkdf'
+gem 'capistrano'
+gem 'capistrano3-puma'
+gem 'capistrano-bundler', require: false
+gem 'capistrano-passenger'
+gem 'capistrano-rails', require: false
+gem 'capistrano-rvm'
+gem 'capistrano-yarn'
