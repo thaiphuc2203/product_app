@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
-ruby '3.1.2'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.1.1'
+gem 'rails', '~> 7.1.2'
 
 # Use postgresql as the database for Active Record
 gem 'mysql2'
 gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '>= 5.0'
+gem 'puma', '< 5'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -50,7 +50,7 @@ end
 
 gem 'bcrypt_pbkdf'
 gem 'capistrano'
-gem 'capistrano3-puma'
+gem 'capistrano3-puma', '4.0.0'
 gem 'capistrano-bundler', require: false
 gem 'capistrano-passenger'
 gem 'capistrano-rails', require: false
