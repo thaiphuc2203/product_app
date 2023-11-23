@@ -52,7 +52,7 @@ end
 
 namespace :deploy do
   desc 'Make sure local git is in sync with remote.'
-  task :check_revision do
+  task :force_bundle_install do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/deploy_original`
         puts 'WARNING: HEAD is not the same as origin/deploy_original'
