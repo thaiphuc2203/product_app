@@ -13,6 +13,7 @@ set :stage, :production
 set :rails_env, :production
 set :use_sudo, true
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+set :ssh_options,     { forward_agent: true, user: fetch(:user)}
 # Don't change these unless you know what you're doing
 # set :pty,             true
 # set :use_sudo,        true
