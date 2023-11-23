@@ -52,8 +52,11 @@ end
 
 namespace :deploy do
   desc 'Make sure local git is in sync with remote.'
-  task :force_bundle_install do
+  task :check_revision do
     on roles(:app) do
+      within release_path do
+        execute :rm, release_path.join('Gemfile.lock')
+      end
       unless `git rev-parse HEAD` == `git rev-parse origin/deploy_original`
         puts 'WARNING: HEAD is not the same as origin/deploy_original'
         puts 'Run `git push` to sync changes.'
