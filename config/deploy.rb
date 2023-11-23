@@ -80,6 +80,7 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
+  after "deploy:restart", "deploy:cleanup" 
   # after  :finishing,    :restart
 end
 
