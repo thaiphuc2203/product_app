@@ -6,10 +6,9 @@ ruby '3.2.2'
 gem 'rails', '~> 7.1.2'
 
 # Use postgresql as the database for Active Record
-gem 'mysql2'
 gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '< 5'
+gem 'puma', '~> 6.4'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -39,20 +38,15 @@ gem 'rack-cors'
 gem 'jwt_sessions'
 
 group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+
+  # Remove the following if your app does not use Rails
+  gem 'capistrano-rails'
+
+  # Remove the following if your server does not use RVM
+  gem 'capistrano-rvm'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
 end
-
-group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-end
-
-gem 'bcrypt_pbkdf'
-gem 'capistrano'
-gem 'capistrano3-puma', '4.0.0'
-gem 'capistrano-bundler', require: false
-gem 'capistrano-passenger'
-gem 'capistrano-rails', require: false
-gem 'capistrano-rvm'
-gem 'capistrano-yarn'
