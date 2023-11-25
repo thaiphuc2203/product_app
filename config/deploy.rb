@@ -2,7 +2,7 @@
 lock '~> 3.18.0'
 
 # Change these
-server '54.254.247.125', roles: %i[web app], primary: true
+server '54.254.247.125', user: 'deploy', roles: %i[web app], primary: true
 
 set :repo_url,        'git@github.com:thaiphuc2203/product_app.git'
 set :application,     'product_app'
