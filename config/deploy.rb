@@ -32,9 +32,9 @@ set :linked_dirs,
     fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system',
                                  'public/uploads')
 set :rvm_ruby_version, '3.2.2'
-set :passenger_environment_variables, { path: '/usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini/bin:$PATH' }
+set :passenger_environment_variables, { path: '/usr/lib/ruby/vendor_ruby/phusion_passenger:$PATH' }
 set :passenger_restart_command,
-    '/usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini/bin/passenger-config restart-app'
+    '/usr/lib/ruby/vendor_ruby/phusion_passenger/passenger-config restart-app'
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
