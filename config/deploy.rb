@@ -17,11 +17,11 @@ set :use_sudo,        false
 set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
-set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
-set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
-set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
-set :puma_access_log, "#{release_path}/log/puma.error.log"
-set :puma_error_log,  "#{release_path}/log/puma.access.log"
+set :puma_bind,       "unix:///home/deploy/apps/product_app/shared/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_state,      "/home/deploy/apps/product_app/shared/tmp/pids/puma.state"
+set :puma_pid,        "/home/deploy/apps/product_app/shared/tmp/pids/puma.pid"
+set :puma_access_log, "/home/deploy/apps/product_app/current/log/puma.error.log"
+set :puma_error_log,  "/home/deploy/apps/product_app/current/log/puma.access.log"
 set :ssh_options,     { forward_agent: true, user: fetch(:user)}
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
@@ -42,8 +42,9 @@ namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
     on roles(:app) do
-      execute "mkdir #{shared_path}/tmp/sockets -p"
-      execute "mkdir #{shared_path}/tmp/pids -p"
+      execute "mkdir /home/deploy/apps/product_app/shared/tmp/sockets -p"
+      execute "mkdir /home/deploy/apps/product_app/shared/tmp/pids -p"
+      execute "mkdir /home/deploy/apps/product_app/shared/tmp/pids -p"
     end
   end
 
@@ -59,7 +60,7 @@ namespace :deploy do
       end
     end
   end
-  
+
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/deploy_original`
