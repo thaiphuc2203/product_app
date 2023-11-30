@@ -18,14 +18,14 @@ set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :puma_bind,       "unix:///home/deploy/apps/product_app/shared/tmp/sockets/#{fetch(:application)}-puma.sock"
-set :puma_state,      "/home/deploy/apps/product_app/shared/tmp/pids/puma.state"
-set :puma_pid,        "/home/deploy/apps/product_app/shared/tmp/pids/puma.pid"
-set :puma_access_log, "/home/deploy/apps/product_app/current/log/puma.error.log"
-set :puma_error_log,  "/home/deploy/apps/product_app/current/log/puma.access.log"
-set :ssh_options,     { forward_agent: true, user: fetch(:user)}
+set :puma_state,      '/home/deploy/apps/product_app/shared/tmp/pids/puma.state'
+set :puma_pid,        '/home/deploy/apps/product_app/shared/tmp/pids/puma.pid'
+set :puma_access_log, '/home/deploy/apps/product_app/current/log/puma.error.log'
+set :puma_error_log,  '/home/deploy/apps/product_app/current/log/puma.access.log'
+set :ssh_options,     { forward_agent: true, user: fetch(:user) }
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :puma_init_active_record, true # Change to false when not using ActiveRecord
 
 ## Defaults:
 set :branch, 'deploy_original'
@@ -42,9 +42,9 @@ namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
     on roles(:app) do
-      execute "mkdir /home/deploy/apps/product_app/shared/tmp/sockets -p"
-      execute "mkdir /home/deploy/apps/product_app/shared/tmp/pids -p"
-      execute "mkdir /home/deploy/apps/product_app/shared/tmp/pids -p"
+      execute 'mkdir /home/deploy/apps/product_app/shared/tmp/sockets -p'
+      execute 'mkdir /home/deploy/apps/product_app/shared/tmp/pids -p'
+      execute 'mkdir /home/deploy/apps/product_app/shared/tmp/pids -p'
     end
   end
 
@@ -89,7 +89,7 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after "deploy:restart", "deploy:cleanup" 
+  after 'deploy:restart', 'deploy:cleanup'
   # after  :finishing,    :restart
 end
 

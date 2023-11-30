@@ -46,16 +46,16 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'capistrano',         require: false
-  gem 'capistrano3-puma',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-rvm',     require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
 end
 
 group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano3-puma', '~> 6.0.0.beta', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-rvm',     require: false
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
