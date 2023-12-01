@@ -1,7 +1,7 @@
 lock '~> 3.18.0'
 
 # Change these
-server '15.235.187.53', roles: %i[web db app], primary: true
+server '15.235.187.53',port: 2121, roles: %i[web db app], primary: true
 
 set :repo_url,        'git@github.com:thaiphuc2203/product_app.git'
 set :application,     'product_app'
