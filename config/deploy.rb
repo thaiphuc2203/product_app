@@ -12,6 +12,27 @@ set :deploy_to, "/home/deploy/#{fetch :application}"
 set :branch, 'deploy'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system',
        'public/uploads'
-
+append :linked_files, 'config/master.key'
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
+# Hook the task to run after the migration
+
+namespace :deploy do
+  desc 'Run rake db:seed'
+  task :seed do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, :exec, :rake, 'db:seed RAILS_ENV=production'
+      end
+    end
+  end
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/master.key ]")
+          upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
+      end
+    end
+  end
+end

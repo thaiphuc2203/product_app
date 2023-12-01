@@ -79,6 +79,8 @@ test:
 #
 production:
   <<: *default
-  database: product_backend_production
-  username: product_backend
-  password: <%= ENV["PRODUCT_BACKEND_DATABASE_PASSWORD"] %>
+  database: product_app
+  username: deploy
+  password: "123456"
+  host: "127.0.0.1"
+  port: 5432
